@@ -55,7 +55,7 @@ namespace ProjetPOO {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(116, 88);
+			this->button1->Location = System::Drawing::Point(90, 52);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 0;
