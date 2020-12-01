@@ -112,11 +112,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CLA.h" />
-    <ClInclude Include="Gestion_Stock.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CLA.cpp" />
-    <ClCompile Include="Gestion_Stock.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
