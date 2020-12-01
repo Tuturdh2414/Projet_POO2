@@ -1,6 +1,6 @@
 #pragma once
 ref class CLA
 {
-	int f;
+	int fd;
 };
 
