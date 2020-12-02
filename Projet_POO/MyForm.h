@@ -268,17 +268,23 @@ namespace ProjetPOO {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		ligne = Convert::ToInt32(textBox1->Text) - 1;
+		if (BDD.verification(Convert::ToInt32(textBox1->Text), "Article") == 1) {
+			afficher(Convert::ToInt32(textBox1->Text));
+			ligne = BDD.position(Convert::ToInt32(textBox1->Text) - 1);
+		}
+		else {
+			MessageBox::Show("ID inexistant");
+		}
 	}
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (BDD.verification(Convert::ToInt32(textBox1->Text), "Article") == 1) {
-		afficher(Convert::ToInt32(textBox1->Text));
-		ligne = BDD.position(Convert::ToInt32(textBox1->Text) - 1);
+	
+	if (ligne < NBligne - 1) {
+		ligne += 1;
 	}
 	else {
-		MessageBox::Show("ID inexistant");
+		ligne = 0;
 	}
-
+	afficher();
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (ligne > 0) {
