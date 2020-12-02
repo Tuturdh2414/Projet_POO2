@@ -30,6 +30,8 @@ namespace ProjetPOO {
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::Button^ button4;
+	private: System::Windows::Forms::Button^ button5;
+	private: System::Windows::Forms::Button^ button6;
 		   CL_CAD BDD;
 	public:
 		MyForm(void)
@@ -101,6 +103,8 @@ namespace ProjetPOO {
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->button5 = (gcnew System::Windows::Forms::Button());
+			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// textBox1
@@ -225,7 +229,7 @@ namespace ProjetPOO {
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(75, 23);
 			this->button3->TabIndex = 16;
-			this->button3->Text = L"button3";
+			this->button3->Text = L"ajouter";
 			this->button3->UseVisualStyleBackColor = true;
 			this->button3->Click += gcnew System::EventHandler(this, &MyForm::button3_Click);
 			// 
@@ -233,17 +237,39 @@ namespace ProjetPOO {
 			// 
 			this->button4->Location = System::Drawing::Point(187, 191);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(75, 23);
+			this->button4->Size = System::Drawing::Size(100, 23);
 			this->button4->TabIndex = 17;
-			this->button4->Text = L"button4";
+			this->button4->Text = L"supprimer ";
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
+			// 
+			// button5
+			// 
+			this->button5->Location = System::Drawing::Point(187, 237);
+			this->button5->Name = L"button5";
+			this->button5->Size = System::Drawing::Size(75, 23);
+			this->button5->TabIndex = 18;
+			this->button5->Text = L"modifier";
+			this->button5->UseVisualStyleBackColor = true;
+			this->button5->Click += gcnew System::EventHandler(this, &MyForm::button5_Click);
+			// 
+			// button6
+			// 
+			this->button6->Location = System::Drawing::Point(187, 292);
+			this->button6->Name = L"button6";
+			this->button6->Size = System::Drawing::Size(75, 23);
+			this->button6->TabIndex = 19;
+			this->button6->Text = L"afficher";
+			this->button6->UseVisualStyleBackColor = true;
+			this->button6->Click += gcnew System::EventHandler(this, &MyForm::button6_Click);
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(357, 531);
+			this->Controls->Add(this->button6);
+			this->Controls->Add(this->button5);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
@@ -287,11 +313,34 @@ namespace ProjetPOO {
 	}
 
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+		Stock stock;
+		stock.ajouter(Convert::ToString(textBox2->Text), Convert::ToString(textBox3->Text), Convert::ToString(textBox4->Text), Convert::ToString(textBox5->Text), Convert::ToString(textBox6->Text));
+		NBligne += 1;
+		//afficher(BDD.MaxID("Article", "reference"));
+		//ligne = NBligne - 1;
 
 	}
 
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+		Stock stock;
+		stock.supprimer(Convert::ToInt32(textBox1->Text));
+		ligne -= 1;
+		NBligne -= 1;
+		afficher();
+	}
+private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+	ligne = Convert::ToInt32(textBox1->Text) - 1;
+}
 
-	   }
+private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (BDD.verification(Convert::ToInt32(textBox1->Text), "article") == 1) {
+		afficher(Convert::ToInt32(textBox1->Text));
+		ligne = BDD.position(Convert::ToInt32(textBox1->Text) - 1);
+	}
+	else {
+		MessageBox::Show("ID inexistant");
+	}
+
+}
 };
 }
