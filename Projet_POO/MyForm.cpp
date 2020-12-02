@@ -13,7 +13,8 @@ int __clrcall WinMain(array<String^>^ args)
 
 void ProjetPOO::MyForm::afficher()
 {
-	Stock stocks;
+	Stock stocks(ligne);
+
 	textBox1->Text = stocks.getreference();
 	textBox2->Text = stocks.getnom();
 	textBox3->Text = stocks.getquantite();
@@ -24,7 +25,7 @@ void ProjetPOO::MyForm::afficher()
 
 void ProjetPOO::MyForm::afficher(int reference)
 {
-	Stock stocks;
+	Stock stocks(ligne);
 	textBox1->Text = Convert::ToString(reference);
 	textBox2->Text = stocks.getnom(reference);
 	textBox3->Text = stocks.getquantite(reference);

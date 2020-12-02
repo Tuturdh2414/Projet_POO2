@@ -26,15 +26,15 @@ String^ Stock::getquantite()
 }
 String^ Stock::getprix_HT()
 {
-	return BDD->select(ligne, 3);
+	return BDD->select(ligne, 5);
 }
 String^ Stock::getseuil_de_reaprovisionement()
 {
-	return BDD->select(ligne, 4);
+	return BDD->select(ligne, 11);
 }
 String^ Stock::gettaux_TVA()
 {
-	return BDD->select(ligne, 5);
+	return BDD->select(ligne, 6);
 }
 ////////////////////////////////////////////////////////////////////////////
 String^ Stock::getnom(int reference)
@@ -47,15 +47,15 @@ String^ Stock::getquantite(int reference)
 }
 String^ Stock::getprix_HT(int reference)
 {
-	return BDD->selectWhere(table, entete0, reference, 3);
+	return BDD->selectWhere(table, entete0, reference, 5);
 }
 String^ Stock::getseuil_de_reaprovisionement(int reference)
 {
-	return BDD->selectWhere(table, entete0, reference, 4);
+	return BDD->selectWhere(table, entete0, reference, 11);
 }
 String^ Stock::gettaux_TVA(int reference)
 {
-	return BDD->selectWhere(table,entete0,reference,5);
+	return BDD->selectWhere(table,entete0,reference,6);
 }
 ////////////////////////////////////////////////////////////////////////////
 

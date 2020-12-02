@@ -205,7 +205,7 @@ namespace ProjetPOO {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 14;
-			this->button1->Text = L"button1";
+			this->button1->Text = L"<";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
@@ -215,7 +215,7 @@ namespace ProjetPOO {
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(75, 23);
 			this->button2->TabIndex = 15;
-			this->button2->Text = L"button2";
+			this->button2->Text = L">";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
 			// 
@@ -268,41 +268,30 @@ namespace ProjetPOO {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (BDD.verification(Convert::ToInt32(textBox1->Text), "Article") == 1) {
-			afficher(Convert::ToInt32(textBox1->Text));
-			ligne = BDD.position(Convert::ToInt32(textBox1->Text) - 1);
+		if (ligne < NBligne -1) {
+			ligne -= 1;
 		}
 		else {
-			MessageBox::Show("ID inexistant");
+			ligne = 0;
 		}
+		afficher();
 	}
-private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-	
-	if (ligne < NBligne - 1) {
-		ligne += 1;
-	}
-	else {
-		ligne = 0;
-	}
-	afficher();
-}
-private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (ligne > 0) {
 		ligne -= 1;
 	}
 	else {
-		ligne = NBligne - 1;
+		ligne = NBligne - 1 ;
 	}
 	afficher();
-}
-private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (ligne < NBligne - 1) {
-		ligne += 1;
 	}
-	else {
-		ligne = 0;
+
+	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+
 	}
-	afficher();
-}
+
+	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	   }
 };
 }
