@@ -24,6 +24,6 @@ public:
 	int position(int ID);	//c'est la position dans la table (presque l'ID)
 	int verification(int ID, String^ table);
 	int MaxID();
-	DataSet^ getTableWhere(String^ table, String^ entete1, String^ entete0, int ID);
+	DataSet^ getTableWhere(String^ table, String^ entete1, String^ entete0, int reference);
 
 };

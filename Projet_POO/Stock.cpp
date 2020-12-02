@@ -12,6 +12,10 @@ void Stock::ajouter(String^ nom, String^ quantite, String^ prix_HT, String^ seui
 	BDD->ajouter(table, entete1 + ", " + entete2 + ", " + entete3 + "" + entete4 + ", " + entete5, "'" + nom + "', '" + quantite + "', '" + prix_HT + "', '" + seuil_de_reaprovisionement + "', '" + taux_TVA + "'");
 }
 ////////////////////////////////////////////////////////////////////////////
+String^ Stock::getreference()
+{
+	return BDD->select(ligne, 0);
+}
 String^ Stock::getnom()
 {
 	return BDD->select(ligne, 1);
@@ -54,6 +58,7 @@ String^ Stock::gettaux_TVA(int reference)
 	return BDD->selectWhere(table,entete0,reference,5);
 }
 ////////////////////////////////////////////////////////////////////////////
+
 void Stock::setnom(String^ nom, int reference)
 {
 	BDD->modifier(table, entete0, entete1, nom, reference);

@@ -36,8 +36,7 @@ public:
 	String^ getprix_HT(int reference);
 	String^ getseuil_de_reaprovisionement(int reference);
 	String^ gettaux_TVA(int reference);
-	String^ getNom(int reference);
-	String^ getPrenom(int reference);
+
 
 	void setnom(String^ nom, int reference);
 	void setquantite(String^ quantite, int reference);
