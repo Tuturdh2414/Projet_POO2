@@ -74,5 +74,5 @@ namespace ProjetPOO {
 
 		}
 #pragma endregion
-	};//test
+	};//test version2
 }
