@@ -9,7 +9,7 @@ Stock::Stock(int ligne)
 }
 void Stock::ajouter(String^ nom, String^ quantite, String^ prix_HT, String^ seuil_de_reaprovisionement, String^ taux_TVA)
 {
-	BDD->ajouter(table, entete1 + ", " + entete2 + ", " + entete3 + "" + entete4 + ", " + entete5, "'" + nom + "', '" + quantite + "', '" + prix_HT + "', '" + seuil_de_reaprovisionement + "', '" + taux_TVA + "'");
+	BDD->ajouter(table, entete1+", "+entete2+", "+entete3+", "+entete4+", "+entete5,"'"+nom + "', '" + quantite + "', '" + prix_HT + "', '" + seuil_de_reaprovisionement + "', '" + taux_TVA + "'");
 }
 ////////////////////////////////////////////////////////////////////////////
 String^ Stock::getreference()

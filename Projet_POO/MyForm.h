@@ -1,6 +1,7 @@
 #pragma once
 #include "CL_CAD.h"
 #include "Stock.h"
+#include "Changement.h"
 #include<iostream>
 
 namespace ProjetPOO {
@@ -32,6 +33,11 @@ namespace ProjetPOO {
 	private: System::Windows::Forms::Button^ button4;
 	private: System::Windows::Forms::Button^ button5;
 	private: System::Windows::Forms::Button^ button6;
+	private: System::Windows::Forms::Button^ button7;
+	private: System::Windows::Forms::Button^ supp;
+	private: System::Windows::Forms::Button^ button8;
+
+
 		   CL_CAD BDD;
 	public:
 		MyForm(void)
@@ -39,7 +45,7 @@ namespace ProjetPOO {
 			InitializeComponent();
 			//
 			//TODO: ajoutez ici le code du constructeur
-			NBligne = BDD.NB("Article");
+			NBligne = BDD.NB("Changement");
 			if (NBligne > 0)
 			{
 				afficher();
@@ -71,7 +77,8 @@ namespace ProjetPOO {
 	private: int ligne = 0;
 	private:
 	private: void afficher();
-		   void afficher(int reference);
+		   void afficher(int reference, int ID);
+	//private: void ajouter(String^, int reference);
 		/// <summary>
 		/// Variable nécessaire au concepteur.
 		/// </summary>
@@ -105,6 +112,9 @@ namespace ProjetPOO {
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->button6 = (gcnew System::Windows::Forms::Button());
+			this->button7 = (gcnew System::Windows::Forms::Button());
+			this->supp = (gcnew System::Windows::Forms::Button());
+			this->button8 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// textBox1
@@ -184,7 +194,7 @@ namespace ProjetPOO {
 			// 
 			// textBox10
 			// 
-			this->textBox10->Location = System::Drawing::Point(28, 497);
+			this->textBox10->Location = System::Drawing::Point(28, 415);
 			this->textBox10->Name = L"textBox10";
 			this->textBox10->Size = System::Drawing::Size(100, 22);
 			this->textBox10->TabIndex = 11;
@@ -198,7 +208,7 @@ namespace ProjetPOO {
 			// 
 			// textBox12
 			// 
-			this->textBox12->Location = System::Drawing::Point(28, 415);
+			this->textBox12->Location = System::Drawing::Point(28, 490);
 			this->textBox12->Name = L"textBox12";
 			this->textBox12->Size = System::Drawing::Size(100, 22);
 			this->textBox12->TabIndex = 13;
@@ -255,19 +265,50 @@ namespace ProjetPOO {
 			// 
 			// button6
 			// 
-			this->button6->Location = System::Drawing::Point(187, 292);
+			this->button6->Location = System::Drawing::Point(187, 281);
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(75, 23);
 			this->button6->TabIndex = 19;
 			this->button6->Text = L"afficher";
 			this->button6->UseVisualStyleBackColor = true;
-			this->button6->Click += gcnew System::EventHandler(this, &MyForm::button6_Click);
+			// 
+			// button7
+			// 
+			this->button7->Location = System::Drawing::Point(167, 315);
+			this->button7->Name = L"button7";
+			this->button7->Size = System::Drawing::Size(158, 70);
+			this->button7->TabIndex = 20;
+			this->button7->Text = L"ajouter_changement";
+			this->button7->UseVisualStyleBackColor = true;
+			// 
+			// supp
+			// 
+			this->supp->Location = System::Drawing::Point(187, 396);
+			this->supp->Name = L"supp";
+			this->supp->Size = System::Drawing::Size(113, 61);
+			this->supp->TabIndex = 21;
+			this->supp->Text = L"supprchangee";
+			this->supp->UseVisualStyleBackColor = true;
+			this->supp->Click += gcnew System::EventHandler(this, &MyForm::suppr_change);
+			// 
+			// button8
+			// 
+			this->button8->Location = System::Drawing::Point(187, 483);
+			this->button8->Name = L"button8";
+			this->button8->Size = System::Drawing::Size(126, 36);
+			this->button8->TabIndex = 22;
+			this->button8->Text = L"ajoute change";
+			this->button8->UseVisualStyleBackColor = true;
+			this->button8->Click += gcnew System::EventHandler(this, &MyForm::button8_Click);
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(357, 531);
+			this->Controls->Add(this->button8);
+			this->Controls->Add(this->supp);
+			this->Controls->Add(this->button7);
 			this->Controls->Add(this->button6);
 			this->Controls->Add(this->button5);
 			this->Controls->Add(this->button4);
@@ -329,18 +370,40 @@ namespace ProjetPOO {
 		afficher();
 	}
 private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
-	ligne = Convert::ToInt32(textBox1->Text) - 1;
+	if (Convert::ToString(textBox1->Text) != "") {
+		Stock stock(ligne);
+		if (Convert::ToString(textBox2->Text) != "") {
+			stock.setnom(Convert::ToString(textBox2->Text), Convert::ToInt32(textBox1->Text));
+		}
+		if (Convert::ToString(textBox3->Text) != "") {
+			stock.setquantite(Convert::ToString(textBox3->Text), Convert::ToInt32(textBox1->Text));
+		}
+		if (Convert::ToString(textBox4->Text) != "") {
+			stock.setprix_HT(Convert::ToString(textBox4->Text), Convert::ToInt32(textBox1->Text));
+		}
+		if (Convert::ToString(textBox5->Text) != "") {
+			stock.setseuil_de_reaprovisionement(Convert::ToString(textBox5->Text), Convert::ToInt32(textBox1->Text));
+		}
+		if (Convert::ToString(textBox6->Text) != "") {
+			stock.settaux_TVA(Convert::ToString(textBox6->Text), Convert::ToInt32(textBox1->Text));
+		}
+	}
 }
 
-private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (BDD.verification(Convert::ToInt32(textBox1->Text), "article") == 1) {
-		afficher(Convert::ToInt32(textBox1->Text));
-		ligne = BDD.position(Convert::ToInt32(textBox1->Text) - 1);
-	}
-	else {
-		MessageBox::Show("ID inexistant");
-	}
 
+private: System::Void suppr_change(System::Object^ sender, System::EventArgs^ e) {
+	Changement change;
+	change.supprimer(Convert::ToInt32(textBox7->Text));
+	ligne -= 1;
+	NBligne -= 1;
+	afficher();
+}
+private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e) {
+	Changement change;
+	change.ajouter(Convert::ToInt32(textBox10->Text),Convert::ToDateTime(textBox11->Text), Convert::ToString(textBox12->Text));
+	NBligne += 1;
+	//afficher(BDD.MaxID("Changement", "ID"));
+	//ligne = NBligne - 1;
 }
 };
 }
