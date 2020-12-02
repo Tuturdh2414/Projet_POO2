@@ -19,19 +19,19 @@ CL_CAD::CL_CAD()
 String^ CL_CAD::select(int ligne, int colonne)
 {
 	String^ retour;
-	String^ requeteSQL = "SELECT * FROM Changement ";
+	String^ requeteSQL = "SELECT * FROM Article ";
 	SqlCommand^ command = gcnew SqlCommand(requeteSQL, connect);
 	adapter = gcnew SqlDataAdapter(command);
 	DS = gcnew DataSet();
-	adapter->Fill(DS, "ID");
-	retour = Convert::ToString(DS->Tables["ID"]->Rows[ligne]->ItemArray[colonne]);
+	adapter->Fill(DS, "reference");
+	retour = Convert::ToString(DS->Tables["reference"]->Rows[ligne]->ItemArray[colonne]);
 	return retour;
 }
 
-String^ CL_CAD::selectWhere(String^ table, String^ entete, int ID, int colonne)
+String^ CL_CAD::selectWhere(String^ table, String^ entete, int reference, int colonne)
 {
 	String^ retour;
-	String^ requeteSQL = "select * FROM " + table + " WHERE " + entete + " = " + ID;
+	String^ requeteSQL = "select * FROM " + table + " WHERE " + entete + " = " + reference;
 	SqlCommand^ command = gcnew SqlCommand(requeteSQL, connect);
 	adapter = gcnew SqlDataAdapter(command);
 	DS = gcnew DataSet();
@@ -60,8 +60,8 @@ void CL_CAD::supprimer(String^ table, String^ entete0, int ID)
 	action(requeteSQL);
 }
 
-void CL_CAD::modifier(String^ table, String^ entete0, String^ entetemod, String^ mot, int ID) {
-	String^ requeteSQL = "UPDATE " + table + " SET " + entetemod + " = '" + mot + "' WHERE " + entete0 + " = " + ID;
+void CL_CAD::modifier(String^ table, String^ entete0, String^ entetemod, String^ mot, int reference) {
+	String^ requeteSQL = "UPDATE " + table + " SET " + entetemod + " = '" + mot + "' WHERE " + entete0 + " = " + reference;
 	action(requeteSQL);
 }
 
@@ -75,10 +75,10 @@ int CL_CAD::NB(String^ table) {
 	return retour;
 }
 
-int CL_CAD::position(int ID)
+int CL_CAD::position(int reference)
 {
 	int retour;
-	SqlCommand^ command = gcnew SqlCommand(("SELECT COUNT (*) FROM Article WHERE reference <= " + ID), connect);
+	SqlCommand^ command = gcnew SqlCommand(("SELECT COUNT (*) FROM Article WHERE reference <= " + reference), connect);
 	adapter = gcnew SqlDataAdapter(command);
 	DS = gcnew DataSet();
 	adapter->Fill(DS, "position");
@@ -86,10 +86,10 @@ int CL_CAD::position(int ID)
 	return retour;
 }
 
-int CL_CAD::verification(int ID, String^ table)
+int CL_CAD::verification(int reference, String^ table)
 {
 	int retour;
-	SqlCommand^ command = gcnew SqlCommand(("SELECT COUNT (*) FROM " + table + " WHERE reference = " + ID), connect);
+	SqlCommand^ command = gcnew SqlCommand(("SELECT COUNT (*) FROM " + table + " WHERE reference = " + reference), connect);
 	adapter = gcnew SqlDataAdapter(command);
 	DS = gcnew DataSet();
 	adapter->Fill(DS, "position");
@@ -100,7 +100,7 @@ int CL_CAD::verification(int ID, String^ table)
 int CL_CAD::MaxID()
 {
 	int retour;
-	SqlCommand^ command = gcnew SqlCommand(("SELECT MAX (ID) FROM Article "), connect);
+	SqlCommand^ command = gcnew SqlCommand(("SELECT MAX (reference) FROM Article "), connect);
 	adapter = gcnew SqlDataAdapter(command);
 	DS = gcnew DataSet();
 	adapter->Fill(DS, "IDMAX");
@@ -108,9 +108,9 @@ int CL_CAD::MaxID()
 	return retour;
 }
 
-DataSet^ CL_CAD::getTableWhere(String^ table, String^ entete1, String^ entete0, int ID) {
+DataSet^ CL_CAD::getTableWhere(String^ table, String^ entete1, String^ entete0, int reference) {
 
-	SqlCommand^ command = gcnew SqlCommand(("SELECT " + entete1 + " FROM " + table + " WHERE " + entete0 + " = " + ID), connect);
+	SqlCommand^ command = gcnew SqlCommand(("SELECT " + entete1 + " FROM " + table + " WHERE " + entete0 + " = " + reference), connect);
 	adapter = gcnew SqlDataAdapter(command);
 	DS = gcnew DataSet();
 	adapter->Fill(DS, table + "_" + entete0);
