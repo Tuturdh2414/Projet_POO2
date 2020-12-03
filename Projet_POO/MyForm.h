@@ -84,7 +84,15 @@ namespace ProjetPOO {
 	private:
 	private: void afficher();
 		   void afficher(int reference, int ID);
-	private: void ajouter();
+	private: void ajouterchangement();
+		   void mettre_a_jour_stock();
+		   void ajout_stock_ou_modification();
+
+
+
+
+
+
 	//private: void ajouter(String^, int reference);
 		/// <summary>
 		/// Variable nécessaire au concepteur.
@@ -462,7 +470,7 @@ private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e
 }
 	   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 private: System::Void button9_Click(System::Object^ sender, System::EventArgs^ e) {
-	ajouter();
+	ajouterchangement();
 
 }
 };

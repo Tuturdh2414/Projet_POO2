@@ -30,6 +30,9 @@
     <ClInclude Include="tets.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="Statistique.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CL_CAD.cpp">
@@ -45,6 +48,9 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="tets.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Statistique.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>

@@ -47,7 +47,7 @@ void ProjetPOO::MyForm::afficher(int reference, int ID)
 	textBox9->Text = changement.getreference(ID);
 	*/
 }
-void ProjetPOO::MyForm::ajouter()
+void ProjetPOO::MyForm::ajouterchangement()
 {
 	String^ requeteSQL;
 	tets test;
@@ -55,3 +55,17 @@ void ProjetPOO::MyForm::ajouter()
 	test.action(requeteSQL);
 }
 
+void ProjetPOO::MyForm::mettre_a_jour_stock()
+{
+	String^ requeteSQL;
+	tets test;
+	requeteSQL = "UPDATE Article SET stock = stock - vente";
+	test.action(requeteSQL);
+}
+void ProjetPOO::MyForm::ajout_stock_ou_modification()
+{
+	String^ requeteSQL;
+	tets test;
+	requeteSQL = "UPDATE Article SET quantite = stock";
+	test.action(requeteSQL);
+}

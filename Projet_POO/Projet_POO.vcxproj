@@ -121,6 +121,7 @@
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Statistique.h" />
     <ClInclude Include="Stock.h" />
     <ClInclude Include="tets.h" />
   </ItemGroup>
@@ -128,6 +129,7 @@
     <ClCompile Include="Changement.cpp" />
     <ClCompile Include="CL_CAD.cpp" />
     <ClCompile Include="MyForm.cpp" />
+    <ClCompile Include="Statistique.cpp" />
     <ClCompile Include="Stock.cpp" />
     <ClCompile Include="tets.cpp" />
   </ItemGroup>
