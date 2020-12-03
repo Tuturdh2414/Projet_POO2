@@ -1,5 +1,6 @@
 #include "MyForm.h"
 #include "Stock.h"
+#include "tets.h"
 #include "Changement.h"
 using namespace System;
 using namespace System::Windows::Forms;
@@ -45,5 +46,12 @@ void ProjetPOO::MyForm::afficher(int reference, int ID)
 	textBox8->Text = changement.getdate(ID);
 	textBox9->Text = changement.getreference(ID);
 	*/
+}
+void ProjetPOO::MyForm::ajouter()
+{
+	String^ requeteSQL;
+	tets test;
+	requeteSQL = "INSERT INTO Changement (date, reference) VALUES ('"+textBox13->Text+"', '"+textBox14->Text+"')";
+	test.action(requeteSQL);
 }
 

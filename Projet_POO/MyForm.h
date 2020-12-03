@@ -2,6 +2,7 @@
 #include "CL_CAD.h"
 #include "Stock.h"
 #include "Changement.h"
+#include "tets.h"
 #include<iostream>
 
 namespace ProjetPOO {
@@ -36,6 +37,11 @@ namespace ProjetPOO {
 	private: System::Windows::Forms::Button^ button7;
 	private: System::Windows::Forms::Button^ supp;
 	private: System::Windows::Forms::Button^ button8;
+	private: System::Windows::Forms::Button^ button9;
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip3;
+	private: System::Windows::Forms::TextBox^ textBox13;
+	private: System::Windows::Forms::TextBox^ textBox14;
 
 
 		   CL_CAD BDD;
@@ -45,11 +51,11 @@ namespace ProjetPOO {
 			InitializeComponent();
 			//
 			//TODO: ajoutez ici le code du constructeur
-			NBligne = BDD.NB("Changement");
+			/*NBligne = BDD.NB("Changement");
 			if (NBligne > 0)
 			{
 				afficher();
-			}
+			}*/
 			
 			//
 		}
@@ -78,6 +84,7 @@ namespace ProjetPOO {
 	private:
 	private: void afficher();
 		   void afficher(int reference, int ID);
+	private: void ajouter();
 	//private: void ajouter(String^, int reference);
 		/// <summary>
 		/// Variable nécessaire au concepteur.
@@ -115,6 +122,11 @@ namespace ProjetPOO {
 			this->button7 = (gcnew System::Windows::Forms::Button());
 			this->supp = (gcnew System::Windows::Forms::Button());
 			this->button8 = (gcnew System::Windows::Forms::Button());
+			this->button9 = (gcnew System::Windows::Forms::Button());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->contextMenuStrip3 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
+			this->textBox13 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox14 = (gcnew System::Windows::Forms::TextBox());
 			this->SuspendLayout();
 			// 
 			// textBox1
@@ -301,11 +313,54 @@ namespace ProjetPOO {
 			this->button8->UseVisualStyleBackColor = true;
 			this->button8->Click += gcnew System::EventHandler(this, &MyForm::button8_Click);
 			// 
+			// button9
+			// 
+			this->button9->Location = System::Drawing::Point(227, 575);
+			this->button9->Name = L"button9";
+			this->button9->Size = System::Drawing::Size(75, 23);
+			this->button9->TabIndex = 23;
+			this->button9->Text = L"test";
+			this->button9->UseVisualStyleBackColor = true;
+			this->button9->Click += gcnew System::EventHandler(this, &MyForm::button9_Click);
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(28, 540);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(41, 17);
+			this->label1->TabIndex = 24;
+			this->label1->Text = L"essai";
+			// 
+			// contextMenuStrip3
+			// 
+			this->contextMenuStrip3->ImageScalingSize = System::Drawing::Size(20, 20);
+			this->contextMenuStrip3->Name = L"contextMenuStrip3";
+			this->contextMenuStrip3->Size = System::Drawing::Size(61, 4);
+			// 
+			// textBox13
+			// 
+			this->textBox13->Location = System::Drawing::Point(28, 575);
+			this->textBox13->Name = L"textBox13";
+			this->textBox13->Size = System::Drawing::Size(100, 22);
+			this->textBox13->TabIndex = 26;
+			// 
+			// textBox14
+			// 
+			this->textBox14->Location = System::Drawing::Point(28, 604);
+			this->textBox14->Name = L"textBox14";
+			this->textBox14->Size = System::Drawing::Size(100, 22);
+			this->textBox14->TabIndex = 27;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(357, 531);
+			this->ClientSize = System::Drawing::Size(357, 655);
+			this->Controls->Add(this->textBox14);
+			this->Controls->Add(this->textBox13);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->button9);
 			this->Controls->Add(this->button8);
 			this->Controls->Add(this->supp);
 			this->Controls->Add(this->button7);
@@ -404,6 +459,11 @@ private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e
 	NBligne += 1;
 	//afficher(BDD.MaxID("Changement", "ID"));
 	//ligne = NBligne - 1;
+}
+	   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+private: System::Void button9_Click(System::Object^ sender, System::EventArgs^ e) {
+	ajouter();
+
 }
 };
 }

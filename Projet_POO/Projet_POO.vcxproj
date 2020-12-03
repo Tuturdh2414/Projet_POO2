@@ -122,12 +122,14 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Stock.h" />
+    <ClInclude Include="tets.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Changement.cpp" />
     <ClCompile Include="CL_CAD.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="Stock.cpp" />
+    <ClCompile Include="tets.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
