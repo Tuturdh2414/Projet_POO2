@@ -4,7 +4,7 @@
 #include "Changement.h"
 #include "tets.h"
 #include<iostream>
-
+#include "Statistique.h"
 namespace ProjetPOO {
 
 	using namespace System;
@@ -42,6 +42,14 @@ namespace ProjetPOO {
 	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip3;
 	private: System::Windows::Forms::TextBox^ textBox13;
 	private: System::Windows::Forms::TextBox^ textBox14;
+	private: System::Windows::Forms::TextBox^ textBox15;
+	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip4;
+	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip5;
+	private: System::Windows::Forms::TextBox^ textBox16;
+	private: System::Windows::Forms::TextBox^ textBox17;
+	private: System::Windows::Forms::TextBox^ textBox18;
+	private: System::Windows::Forms::TextBox^ textBox19;
+	private: System::Windows::Forms::DataGridView^ dataGridView1;
 
 
 		   CL_CAD BDD;
@@ -56,7 +64,7 @@ namespace ProjetPOO {
 			{
 				afficher();
 			}*/
-			
+			affichagetest();
 			//
 		}
 
@@ -87,7 +95,7 @@ namespace ProjetPOO {
 	private: void ajouterchangement();
 		   void mettre_a_jour_stock();
 		   void ajout_stock_ou_modification();
-
+		   void affichagetest();
 
 
 
@@ -135,6 +143,15 @@ namespace ProjetPOO {
 			this->contextMenuStrip3 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			this->textBox13 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox14 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox15 = (gcnew System::Windows::Forms::TextBox());
+			this->contextMenuStrip4 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
+			this->contextMenuStrip5 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
+			this->textBox16 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox17 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox18 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox19 = (gcnew System::Windows::Forms::TextBox());
+			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// textBox1
@@ -360,11 +377,74 @@ namespace ProjetPOO {
 			this->textBox14->Size = System::Drawing::Size(100, 22);
 			this->textBox14->TabIndex = 27;
 			// 
+			// textBox15
+			// 
+			this->textBox15->Location = System::Drawing::Point(528, 57);
+			this->textBox15->Name = L"textBox15";
+			this->textBox15->Size = System::Drawing::Size(100, 22);
+			this->textBox15->TabIndex = 28;
+			// 
+			// contextMenuStrip4
+			// 
+			this->contextMenuStrip4->ImageScalingSize = System::Drawing::Size(20, 20);
+			this->contextMenuStrip4->Name = L"contextMenuStrip4";
+			this->contextMenuStrip4->Size = System::Drawing::Size(61, 4);
+			// 
+			// contextMenuStrip5
+			// 
+			this->contextMenuStrip5->ImageScalingSize = System::Drawing::Size(20, 20);
+			this->contextMenuStrip5->Name = L"contextMenuStrip5";
+			this->contextMenuStrip5->Size = System::Drawing::Size(61, 4);
+			// 
+			// textBox16
+			// 
+			this->textBox16->Location = System::Drawing::Point(528, 100);
+			this->textBox16->Name = L"textBox16";
+			this->textBox16->Size = System::Drawing::Size(100, 22);
+			this->textBox16->TabIndex = 32;
+			// 
+			// textBox17
+			// 
+			this->textBox17->Location = System::Drawing::Point(528, 145);
+			this->textBox17->Name = L"textBox17";
+			this->textBox17->Size = System::Drawing::Size(100, 22);
+			this->textBox17->TabIndex = 33;
+			// 
+			// textBox18
+			// 
+			this->textBox18->Location = System::Drawing::Point(528, 191);
+			this->textBox18->Name = L"textBox18";
+			this->textBox18->Size = System::Drawing::Size(100, 22);
+			this->textBox18->TabIndex = 34;
+			// 
+			// textBox19
+			// 
+			this->textBox19->Location = System::Drawing::Point(528, 237);
+			this->textBox19->Name = L"textBox19";
+			this->textBox19->Size = System::Drawing::Size(100, 22);
+			this->textBox19->TabIndex = 35;
+			// 
+			// dataGridView1
+			// 
+			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView1->Location = System::Drawing::Point(745, 108);
+			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->RowHeadersWidth = 51;
+			this->dataGridView1->RowTemplate->Height = 24;
+			this->dataGridView1->Size = System::Drawing::Size(240, 150);
+			this->dataGridView1->TabIndex = 36;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(357, 655);
+			this->ClientSize = System::Drawing::Size(1316, 655);
+			this->Controls->Add(this->dataGridView1);
+			this->Controls->Add(this->textBox19);
+			this->Controls->Add(this->textBox18);
+			this->Controls->Add(this->textBox17);
+			this->Controls->Add(this->textBox16);
+			this->Controls->Add(this->textBox15);
 			this->Controls->Add(this->textBox14);
 			this->Controls->Add(this->textBox13);
 			this->Controls->Add(this->label1);
@@ -392,6 +472,7 @@ namespace ProjetPOO {
 			this->Controls->Add(this->textBox1);
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 

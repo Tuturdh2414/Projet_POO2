@@ -1,4 +1,5 @@
 #include "Statistique.h"
+#include "tets.h"
 String^ Statistique::getID_Client()
 {
 	return BDD->select(ligne, 0);
@@ -11,6 +12,9 @@ String^ Statistique::Pagnier_Moyen()
 }
 String^ Statistique::Ca_mois()
 {
+	String^ requeteSQL;
+	requeteSQL = "SELECT ";
+	return requeteSQL;
 
 }
 String^ Statistique::Prod_sous_seuil()
@@ -41,5 +45,6 @@ String^ Statistique::lesplusvendu()
 {
 	String^ requeteSQL;
 	requeteSQL = "SELECT vente, MAX(reference) FROM Article GROUP BY vente ORDER BY vente";
-	return requeteSQL;
+	test.action(requeteSQL);
+	
 }

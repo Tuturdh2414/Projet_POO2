@@ -2,6 +2,7 @@
 #include "Stock.h"
 #include "tets.h"
 #include "Changement.h"
+#include "Statistique.h"
 using namespace System;
 using namespace System::Windows::Forms;
 [STAThreadAttribute]
@@ -23,16 +24,17 @@ void ProjetPOO::MyForm::afficher()
 	textBox4->Text = stocks.getprix_HT();
 	textBox5->Text = stocks.getseuil_de_reaprovisionement();
 	textBox6->Text = stocks.gettaux_TVA();
-	/*
+	
 	Changement changement(ligne);
 	textBox7->Text = changement.getID();
 	textBox8->Text = changement.getdate();
 	textBox9->Text = changement.getreference();
-	*/
+	
 	}
 
 void ProjetPOO::MyForm::afficher(int reference, int ID)
 {
+	
 	Stock stocks(ligne);
 	textBox1->Text = Convert::ToString(reference);
 	textBox2->Text = stocks.getnom(reference);
@@ -40,12 +42,12 @@ void ProjetPOO::MyForm::afficher(int reference, int ID)
 	textBox4->Text = stocks.getprix_HT(reference);
 	textBox5->Text = stocks.getseuil_de_reaprovisionement(reference);
 	textBox6->Text = stocks.gettaux_TVA(reference);
-	/*
+	
 	Changement changement(ligne);
 	textBox7->Text = Convert::ToString(ID);
 	textBox8->Text = changement.getdate(ID);
 	textBox9->Text = changement.getreference(ID);
-	*/
+	
 }
 void ProjetPOO::MyForm::ajouterchangement()
 {
@@ -68,4 +70,14 @@ void ProjetPOO::MyForm::ajout_stock_ou_modification()
 	tets test;
 	requeteSQL = "UPDATE Article SET quantite = stock";
 	test.action(requeteSQL);
+}
+
+
+void ProjetPOO::MyForm::affichagetest()
+{
+	Statistique stat;
+	
+	textBox15->Text = stat.Pagnier_Moyen());
+	textBox16->Text = stat.Valeur_achat_stock());
+	textBox17->Text = stat.Valeur_commercial_stock());
 }

@@ -1,4 +1,5 @@
 #pragma once
+#include "tets.h"
 #using <System.data.dll>
 using namespace System::Data;
 using namespace System::Data::SqlClient;
@@ -8,6 +9,7 @@ using namespace System;
 ref class Statistique
 {
 private:
+	tets test;
 	CL_CAD^ BDD = gcnew CL_CAD;
 	int ligne;
 	String^ ID_Client;
